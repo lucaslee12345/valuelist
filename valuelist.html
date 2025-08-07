@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Value List Viewer</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f4f6fa;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      padding: 32px 24px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 24px;
+      color: #2d3a4a;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 16px;
+    }
+    th, td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #e0e6ed;
+    }
+    th {
+      background: #3b5998;
+      color: #fff;
+      font-weight: 600;
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    .demand-Bad { background: #f8d7da; }
+    .demand-Meh { background: #fceabb; }
+    .demand-Decent { background: #e2f7e1; }
+    .demand-Good { background: #d0f0fd; }
+    .demand-Overpaid { background: #e0e7ff; }
+    .demand-Anti-Poor { background: #f5e1ff; }
+    .demand-Trash { background: #ffcccc; }
+    .demand- { background: #fff; }
+    .footer-legend {
+      margin-top: 18px;
+      font-size: 0.95em;
+      color: #555;
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .legend-box {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      margin-right: 6px;
+      vertical-align: middle;
+      border-radius: 3px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Value List</h1>
+    <table id="valueTable">
+      <thead>
+        <tr>
+          <th>Item Name</th>
+          <th>Demand</th>
+          <th>Value (Keys)</th>
+          <th>Value (Gems)</th>
+          <th>Tax (Gems)</th>
+          <th>Tax (Gold)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Table rows will be inserted by JavaScript -->
+      </tbody>
+    </table>
+    <div class="footer-legend">
+      <span><span class="legend-box" style="background:#ffcccc"></span>Trash</span>
+      <span><span class="legend-box" style="background:#f8d7da"></span>Bad</span>
+      <span><span class="legend-box" style="background:#fceabb"></span>Meh</span>
+      <span><span class="legend-box" style="background:#e2f7e1"></span>Decent</span>
+      <span><span class="legend-box" style="background:#d0f0fd"></span>Good</span>
+      <span><span class="legend-box" style="background:#e0e7ff"></span>Overpaid</span>
+      <span><span class="legend-box" style="background:#f5e1ff"></span>Anti-Poor</span>
+    </div>
+  </div>
+  <script>
+    // Data from the image
+    const valueData = [
+      { name: 'Third Eye Aura', demand: 'Anti-Poor', value: '251,000', gems: '156.88', taxGems: '100,000', taxGold: '' },
+      { name: 'Eclipse Aura', demand: 'Anti-Poor', value: '100,400', gems: '62.75', taxGems: '100,000', taxGold: '' },
+      { name: 'Seraphic Aura', demand: 'Meh', value: '40,160', gems: '25.10', taxGems: '100,000', taxGold: '' },
+      { name: 'Toji Attire', demand: 'Bad', value: '10,290', gems: '6.43', taxGems: '5,625', taxGold: '' },
+      { name: 'Bambietta wings', demand: 'Decent', value: '9,290', gems: '5.81', taxGems: '5,625', taxGold: '' },
+      { name: 'Ulquiorra wings', demand: 'Good', value: '8,290', gems: '5.18', taxGems: '5,625', taxGold: '' },
+      { name: 'Black Flash Aura', demand: 'Good', value: '6,400', gems: '4.00', taxGems: '5,625', taxGold: '' },
+      { name: 'Primera Attire', demand: 'Decent', value: '4,800', gems: '3.00', taxGems: '5,625', taxGold: '' },
+      { name: 'Zangetsu', demand: 'Overpaid', value: '5,000', gems: '3.13', taxGems: '5,625', taxGold: '' },
+      { name: 'Helos', demand: 'Decent', value: '2,500', gems: '1.56', taxGems: '50,000', taxGold: '' },
+      { name: 'Fritz', demand: 'Decent', value: '2,100', gems: '1.31', taxGems: '50,000', taxGold: '' },
+      { name: 'Mahoraga Wheel', demand: 'Good', value: '1,600', gems: '1.00', taxGems: '1,500', taxGold: '' },
+      { name: 'Onikiri Eren', demand: 'Meh', value: '1,100', gems: '0.69', taxGems: '', taxGold: '200,000' },
+      { name: 'Captain’s Attire', demand: 'Good', value: '1,000', gems: '0.63', taxGems: '1,500', taxGold: '' },
+      { name: 'Icarus Ts', demand: 'Good', value: '500', gems: '0.31', taxGems: '', taxGold: '116,000' },
+      { name: 'Jotunn', demand: 'Good', value: '400', gems: '0.25', taxGems: '', taxGold: '100,000' },
+      { name: 'Vizard Mask', demand: 'Overpaid', value: '290', gems: '0.18', taxGems: '', taxGold: '200,000' },
+      { name: 'Cosmic Nova / Astolfo', demand: 'Meh', value: '150', gems: '0.09', taxGems: '5,625', taxGold: '' },
+      { name: 'Prestige Scroll', demand: 'Trash', value: '3', gems: '', taxGems: '', taxGold: '13,000' },
+      { name: 'Key', demand: 'Trash', value: '1', gems: '0.00', taxGems: '', taxGold: '30,000' },
+    ];
+
+    function demandClass(demand) {
+      return 'demand-' + (demand ? demand.replace(/\s/g, '-') : '');
+    }
+
+    function renderTable() {
+      const tbody = document.querySelector('#valueTable tbody');
+      tbody.innerHTML = '';
+      valueData.forEach(row => {
+        const tr = document.createElement('tr');
+        tr.className = demandClass(row.demand);
+        tr.innerHTML = `
+          <td>${row.name}</td>
+          <td>${row.demand}</td>
+          <td>🔑${row.value}</td>
+          <td>${row.gems ? '🪙' + row.gems : ''}</td>
+          <td>${row.taxGems ? '💎' + row.taxGems : ''}</td>
+          <td>${row.taxGold ? '🪙' + row.taxGold : ''}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    // Initial render
+    renderTable();
+
+    // Placeholder for live update (e.g., fetch from server)
+    // setInterval(() => { /* fetch and update valueData, then renderTable() */ }, 60000);
+  </script>
+</body>
+</html>

@@ -99,57 +99,59 @@
     </div>
   </div>
   <script>
-    // Data from the image
-    const valueData = [
-      { name: 'Third Eye Aura', demand: 'Anti-Poor', value: '251,000', gems: '156.88', taxGems: '100,000', taxGold: '' },
-      { name: 'Eclipse Aura', demand: 'Anti-Poor', value: '100,400', gems: '62.75', taxGems: '100,000', taxGold: '' },
-      { name: 'Seraphic Aura', demand: 'Meh', value: '40,160', gems: '25.10', taxGems: '100,000', taxGold: '' },
-      { name: 'Toji Attire', demand: 'Bad', value: '10,290', gems: '6.43', taxGems: '5,625', taxGold: '' },
-      { name: 'Bambietta wings', demand: 'Decent', value: '9,290', gems: '5.81', taxGems: '5,625', taxGold: '' },
-      { name: 'Ulquiorra wings', demand: 'Good', value: '8,290', gems: '5.18', taxGems: '5,625', taxGold: '' },
-      { name: 'Black Flash Aura', demand: 'Good', value: '6,400', gems: '4.00', taxGems: '5,625', taxGold: '' },
-      { name: 'Primera Attire', demand: 'Decent', value: '4,800', gems: '3.00', taxGems: '5,625', taxGold: '' },
-      { name: 'Zangetsu', demand: 'Overpaid', value: '5,000', gems: '3.13', taxGems: '5,625', taxGold: '' },
-      { name: 'Helos', demand: 'Decent', value: '2,500', gems: '1.56', taxGems: '50,000', taxGold: '' },
-      { name: 'Fritz', demand: 'Decent', value: '2,100', gems: '1.31', taxGems: '50,000', taxGold: '' },
-      { name: 'Mahoraga Wheel', demand: 'Good', value: '1,600', gems: '1.00', taxGems: '1,500', taxGold: '' },
-      { name: 'Onikiri Eren', demand: 'Meh', value: '1,100', gems: '0.69', taxGems: '', taxGold: '200,000' },
-      { name: 'Captain’s Attire', demand: 'Good', value: '1,000', gems: '0.63', taxGems: '1,500', taxGold: '' },
-      { name: 'Icarus Ts', demand: 'Good', value: '500', gems: '0.31', taxGems: '', taxGold: '116,000' },
-      { name: 'Jotunn', demand: 'Good', value: '400', gems: '0.25', taxGems: '', taxGold: '100,000' },
-      { name: 'Vizard Mask', demand: 'Overpaid', value: '290', gems: '0.18', taxGems: '', taxGold: '200,000' },
-      { name: 'Cosmic Nova / Astolfo', demand: 'Meh', value: '150', gems: '0.09', taxGems: '5,625', taxGold: '' },
-      { name: 'Prestige Scroll', demand: 'Trash', value: '3', gems: '', taxGems: '', taxGold: '13,000' },
-      { name: 'Key', demand: 'Trash', value: '1', gems: '0.00', taxGems: '', taxGold: '30,000' },
-    ];
+    document.addEventListener('DOMContentLoaded', function() {
+      // Data from the image
+      const valueData = [
+        { name: 'Third Eye Aura', demand: 'Anti-Poor', value: '251,000', gems: '156.88', taxGems: '100,000', taxGold: '' },
+        { name: 'Eclipse Aura', demand: 'Anti-Poor', value: '100,400', gems: '62.75', taxGems: '100,000', taxGold: '' },
+        { name: 'Seraphic Aura', demand: 'Meh', value: '40,160', gems: '25.10', taxGems: '100,000', taxGold: '' },
+        { name: 'Toji Attire', demand: 'Bad', value: '10,290', gems: '6.43', taxGems: '5,625', taxGold: '' },
+        { name: 'Bambietta wings', demand: 'Decent', value: '9,290', gems: '5.81', taxGems: '5,625', taxGold: '' },
+        { name: 'Ulquiorra wings', demand: 'Good', value: '8,290', gems: '5.18', taxGems: '5,625', taxGold: '' },
+        { name: 'Black Flash Aura', demand: 'Good', value: '6,400', gems: '4.00', taxGems: '5,625', taxGold: '' },
+        { name: 'Primera Attire', demand: 'Decent', value: '4,800', gems: '3.00', taxGems: '5,625', taxGold: '' },
+        { name: 'Zangetsu', demand: 'Overpaid', value: '5,000', gems: '3.13', taxGems: '5,625', taxGold: '' },
+        { name: 'Helos', demand: 'Decent', value: '2,500', gems: '1.56', taxGems: '50,000', taxGold: '' },
+        { name: 'Fritz', demand: 'Decent', value: '2,100', gems: '1.31', taxGems: '50,000', taxGold: '' },
+        { name: 'Mahoraga Wheel', demand: 'Good', value: '1,600', gems: '1.00', taxGems: '1,500', taxGold: '' },
+        { name: 'Onikiri Eren', demand: 'Meh', value: '1,100', gems: '0.69', taxGems: '', taxGold: '200,000' },
+        { name: 'Captain’s Attire', demand: 'Good', value: '1,000', gems: '0.63', taxGems: '1,500', taxGold: '' },
+        { name: 'Icarus Ts', demand: 'Good', value: '500', gems: '0.31', taxGems: '', taxGold: '116,000' },
+        { name: 'Jotunn', demand: 'Good', value: '400', gems: '0.25', taxGems: '', taxGold: '100,000' },
+        { name: 'Vizard Mask', demand: 'Overpaid', value: '290', gems: '0.18', taxGems: '', taxGold: '200,000' },
+        { name: 'Cosmic Nova / Astolfo', demand: 'Meh', value: '150', gems: '0.09', taxGems: '5,625', taxGold: '' },
+        { name: 'Prestige Scroll', demand: 'Trash', value: '3', gems: '', taxGems: '', taxGold: '13,000' },
+        { name: 'Key', demand: 'Trash', value: '1', gems: '0.00', taxGems: '', taxGold: '30,000' },
+      ];
 
-    function demandClass(demand) {
-      return 'demand-' + (demand ? demand.replace(/\s/g, '-') : '');
-    }
+      function demandClass(demand) {
+        return 'demand-' + (demand ? demand.replace(/\s/g, '-') : '');
+      }
 
-    function renderTable() {
-      const tbody = document.querySelector('#valueTable tbody');
-      tbody.innerHTML = '';
-      valueData.forEach(row => {
-        const tr = document.createElement('tr');
-        tr.className = demandClass(row.demand);
-        tr.innerHTML = `
-          <td>${row.name}</td>
-          <td>${row.demand}</td>
-          <td>🔑${row.value}</td>
-          <td>${row.gems ? '🪙' + row.gems : ''}</td>
-          <td>${row.taxGems ? '💎' + row.taxGems : ''}</td>
-          <td>${row.taxGold ? '🪙' + row.taxGold : ''}</td>
-        `;
-        tbody.appendChild(tr);
-      });
-    }
+      function renderTable() {
+        const tbody = document.querySelector('#valueTable tbody');
+        tbody.innerHTML = '';
+        valueData.forEach(row => {
+          const tr = document.createElement('tr');
+          tr.className = demandClass(row.demand);
+          tr.innerHTML = `
+            <td>${row.name}</td>
+            <td>${row.demand}</td>
+            <td>🔑${row.value}</td>
+            <td>${row.gems ? '🪙' + row.gems : ''}</td>
+            <td>${row.taxGems ? '💎' + row.taxGems : ''}</td>
+            <td>${row.taxGold ? '🪙' + row.taxGold : ''}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+      }
 
-    // Initial render
-    renderTable();
+      // Initial render
+      renderTable();
 
-    // Placeholder for live update (e.g., fetch from server)
-    // setInterval(() => { /* fetch and update valueData, then renderTable() */ }, 60000);
+      // Placeholder for live update (e.g., fetch from server)
+      // setInterval(() => { /* fetch and update valueData, then renderTable() */ }, 60000);
+    });
   </script>
 </body>
 </html>
